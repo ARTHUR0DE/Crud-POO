@@ -1,49 +1,50 @@
-import PromptSync from "prompt-sync"
-import { AlunoController } from "./modulos/Aluno/controllers/index"
+import promptSync from 'prompt-sync';
+import { AlunoController } from './modulos/Aluno/controllers/index.js';
 
-const aluno1 = new AlunoController()
+const prompt = promptSync();
+const alunoController = new AlunoController();
 
-aluno1.criar("A9111", "Irineu", "irineu@edum.senac.br", "@123")
-aluno1.criar("A9222", "Borges", "borges@edum.senac.br", "@123")
-
-aluno1.listarTodos()
-
-aluno1.deletarPorMatricula("a9111")
-aluno1.listarTodos()
-
-aluno1.editar('a9222',null,"borgeseditado@edum.senac.br",null)
-aluno1.listarTodos()
-
-export default function menuPrincipal() {
-    const imput = prompt()
+function menuAlunos() {
     const opcoes = [
-        "1 - criar aluno",
+        "1 - Criar novo aluno",
         "2 - Listar todos os alunos",
         "3 - Editar aluno por matrícula",
         "4 - Excluir todos os alunos",
         "5 - Excluir por matrícula",
         "0 - Sair"
-    ]
-    console.log(opcoes)
-    let opcao = imput("Escolha a opção desejada: ")
-    console.clear()
-    switch(opcao) {
-        case "0":
-            break
-        case "1":
-            criar()
-            break
-        case "2":
-            listaPorMatricula()
-            break
-        case "3":
-            editar()
-            break
-        case "4":
-            deletarTodos()
-          break
-        case "5":
-          deletarPorMatricula()
-          break  
-    }
+    ];
+
+    let opcao;
+    do {
+        console.clear();
+        console.log(opcoes.join("\n"));
+        opcao = prompt("Escolha a opção desejada: ");
+
+        switch (opcao) {
+            case "0":
+                console.log("Saindo...");
+                break;
+            case "1":
+                alunoController.criar();
+                break;
+            case "2":
+                alunoController.listaPorMatricula();
+                break;
+            case "3":
+                alunoController.editar();
+                break;
+            case "4":
+                alunoController.deletarPorMatricula();
+                break;
+            case "5":
+                alunoController.deletarTodos();
+                break;
+            default:
+                console.log("Opção inválida! Tente novamente.");
+        }
+
+        prompt("\nPressione Enter para continuar...");
+    } while (opcao !== "0");
 }
+
+menuAlunos();
