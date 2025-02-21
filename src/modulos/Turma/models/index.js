@@ -1,4 +1,4 @@
-class Turma {
+export class TurmaModel {
     #cod 
     constructor(cod, nome, sala, capacidade) {
         this.#cod = cod

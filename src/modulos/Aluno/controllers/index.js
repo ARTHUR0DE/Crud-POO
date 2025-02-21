@@ -1,7 +1,7 @@
 import { alunos } from "../../../config/database.js";
 import { AlunoModel } from "../models/index.js";
 export class AlunoController {
-    //Create - criando o aluno no arrey alunos
+    //Create - criando o aluno no array alunos
     criar(matricula, nome, email, senha) {
         try {
             const novoAluno = new AlunoModel(matricula, nome, email, senha)

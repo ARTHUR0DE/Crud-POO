@@ -5,7 +5,7 @@ export const alunos = [
 
 ]
 
-export const turma = [
+export const turmas = [
 
 
 
