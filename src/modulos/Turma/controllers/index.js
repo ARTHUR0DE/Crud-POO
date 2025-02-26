@@ -1,5 +1,7 @@
 import { turmas } from "../../../config/database.js"
 import { TurmaModel } from "../models/index.js"
+import { AlunoController } from "../../Aluno/controllers/index.js"
+import { ProfessorController } from "../../Professor/controllers/index.js"
 
 export class TurmaController {
     criar(cod, nome, sala, capacidade) {
@@ -70,5 +72,6 @@ export class TurmaController {
             console.error("Erro ao tentar exibir as turmas", error.message)
         }
     }
+    
     }
     
